@@ -21,7 +21,6 @@ router.post('/upload', uploads.single('file'), (req, res) => {
 // @route GET files
 // @desc Display all files in JSON
 router.get('/upload', (req, res) => {
-    console.log(gfs)
     gfs.gfs.files.find().toArray((err, files) => {
         // check if files
         if (!files || files.length === 0) {
