@@ -19,10 +19,10 @@ Make it your own:
 
 Install the dependencies:
 
-> Installs server dependencies
+> Installs server dependencies::
 > `yarn install`
 
-> Installs client dependencies
+> Installs client dependencies::
 > `cd client && yarn install`
 
 Run:
