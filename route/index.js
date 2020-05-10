@@ -39,7 +39,6 @@ router.get('/image/:filename', (req, res) => {
     }).toArray((err, file) => {
         // check if files
         if (!file || file.length === 0) {
-            console.log('got here')
             return res.status(404).json({
                 err: 'No file exist',
             });
