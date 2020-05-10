@@ -4,16 +4,11 @@ const uploads = require('../middleware/Gridfs')
 const mongoose = require('mongoose')
 const router = express()
 
-//  @route GET /
-//  desc loads form
-router.get('/', (req, res) => {
-    res.send('Hello world');
-});
 
 // @route POST /uploads
 //  desc uploads file to db
 router.post('/upload', uploads.single('file'), (req, res) => {
-    res.json({
+    res.status(201).json({
         file: req.file,
     });
 });

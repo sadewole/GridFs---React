@@ -10,18 +10,22 @@ const {
 const storage = new GridFsStorage({
     url: mongoURL,
     file: (req, file) => {
-        return new Promise((resolve, reject) => {
-            crypto.randomBytes(16, (err, buf) => {
-                if (err) return reject(err);
+        if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+            return new Promise((resolve, reject) => {
+                crypto.randomBytes(16, (err, buf) => {
+                    if (err) return reject(err);
 
-                const filename = buf.toString('hex') + path.extname(file.originalname);
-                const fileInfo = {
-                    filename: filename,
-                    bucketName: 'uploads',
-                };
-                resolve(fileInfo);
+                    const filename = buf.toString('hex') + path.extname(file.originalname);
+                    const fileInfo = {
+                        filename: filename,
+                        bucketName: 'uploads',
+                    };
+                    resolve(fileInfo);
+                });
             });
-        });
+        } else {
+            return null
+        }
     },
 });
 
