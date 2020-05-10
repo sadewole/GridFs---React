@@ -19,10 +19,10 @@ Make it your own:
 
 Install the dependencies:
 
-> Installs server dependencies::
+> Installs server dependencies ::
 > `yarn install`
 
-> Installs client dependencies::
+> Installs client dependencies ::
 > `cd client && yarn install`
 
 Run:
@@ -38,4 +38,4 @@ Here you'll need to open two terminals to run the project
 
 #### Hurray
 
-Now, you can build something with **GridFS** and **React** :smile:
+Now, you can build something with **GridFS** and **React** :blush:
