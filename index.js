@@ -17,18 +17,23 @@ app.use(express.urlencoded({
 }))
 app.use(methodOverride('_method'));
 
-const conn = mongoose.createConnection(mongoURL, () => {
+const conn = mongoose.createConnection(mongoURL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, () => {
   console.log('Connected to db');
 });
 
+let gridFSBucket
 
 conn.once('open', () => {
   // init stream
-  let gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-  exports.gfs = gfs
-});
+  gridFSBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+    bucketName: 'uploads'
+  });
 
+  exports.gfs = gridFSBucket
+});
 
 app.use('/api/v1', require('./route'));
 
